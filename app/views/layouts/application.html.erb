@@ -7,12 +7,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag "application", 'data-turbo-track': 'reload' %>
     <%= yield :head %>
     <%= turbo_include_tags %>
     <%= stimulus_include_tags %>
   </head>
 
   <body>
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
